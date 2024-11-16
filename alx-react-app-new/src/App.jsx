@@ -6,6 +6,7 @@ import Footer from './components/Footer.jsx';
 import ProfilePage from './ProfilePage';
 import UserContext from './components/UserContext.js'; // Import UserContext
 import { useState } from 'react';
+import Counter from './components/Counter.jsx'
 import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
@@ -26,6 +27,7 @@ function App() {
       <MainContent/>
       <Footer/>
       <Header/>
+      <Counter/>
       return <ProfilePage userData={userData} />;
       <div>
       <ProfilePage userData={userData} /> {/* Pass userData down as a prop to ProfilePage */}
