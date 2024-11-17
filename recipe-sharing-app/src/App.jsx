@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import { BrowserRouter as Routes, Route,Router} from 'react-router-dom';
 import viteLogo from '/vite.svg'
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
+import RecipeDetails from './components/RecipeDetails';
 import './App.css'
 
 function App() {
@@ -10,6 +12,23 @@ function App() {
 
   return (
     <>
+     <Router>
+      <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+        <h1>Recipe Sharing App</h1>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <AddRecipeForm />
+                <RecipeList />
+              </>
+            }
+          />
+          <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
+        </Routes>
+      </div>
+    </Router>
         <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1>Recipe Sharing App</h1>
       <AddRecipeForm />
