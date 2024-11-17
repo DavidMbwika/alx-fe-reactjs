@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+'/'/* eslint-disable no-unused-vars */
 import WelcomeMessage from './WelcomeMessage.jsx';
 import Header from './components/Header.jsx';
 import MainContent from './components/MainContent.jsx';
