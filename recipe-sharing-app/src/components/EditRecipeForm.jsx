@@ -8,9 +8,14 @@ const EditRecipeForm = ({ recipe }) => {
   const [title, setTitle] = useState(recipe.title);
   const [description, setDescription] = useState(recipe.description);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateRecipe({ ...recipe, title, description });
+  const handleSubmit = (event) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+    if (title.trim() && description.trim()) {
+      updateRecipe({ ...recipe, title, description });
+      alert('Recipe updated successfully!');
+    } else {
+      alert('Please fill out both fields before submitting.');
+    }
   };
 
   return (
@@ -20,14 +25,18 @@ const EditRecipeForm = ({ recipe }) => {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
         style={{ display: 'block', marginBottom: '10px', width: '100%' }}
       />
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        placeholder="Description"
         style={{ display: 'block', marginBottom: '10px', width: '100%' }}
       />
-      <button type="submit">Save Changes</button>
+      <button type="submit" style={{ marginTop: '10px' }}>
+        Save Changes
+      </button>
     </form>
   );
 };
