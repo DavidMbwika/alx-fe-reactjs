@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from './Home.jsx'
 import Contact from './assets/Contact.jsx'
 import About from './assets/About.jsx'
@@ -12,6 +13,14 @@ function App() {
 
   return (
     <>
+        <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
       <div>
       <Home/>
       <Contact/>
