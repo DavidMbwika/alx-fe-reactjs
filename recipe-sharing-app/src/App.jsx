@@ -5,6 +5,7 @@ import viteLogo from '/vite.svg'
 import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
+import SearchBar from './components/SearchBar';
 import './App.css'
 
 function App() {
@@ -12,6 +13,8 @@ function App() {
 
   return (
     <>
+    <h1>Recipe Sharing App</h1>
+    <SearchBar />
      <Router>
       <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
         <h1>Recipe Sharing App</h1>
