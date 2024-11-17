@@ -5,6 +5,7 @@ import Home from './Home.jsx'
 import Contact from './assets/Contact.jsx'
 import About from './assets/About.jsx'
 import Services from './assets/Services.jsx'
+import Navbar from './assets/Navbar.jsx'
 import viteLogo from '/vite.svg'
 import './App.css'
 
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <>
+    <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
