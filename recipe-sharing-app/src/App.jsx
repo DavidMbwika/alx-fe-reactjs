@@ -6,6 +6,8 @@ import RecipeList from './components/RecipeList';
 import AddRecipeForm from './components/AddRecipeForm';
 import RecipeDetails from './components/RecipeDetails';
 import SearchBar from './components/SearchBar';
+import FavoritesList from './components/FavoritesList';
+import RecommendationsList from './components/RecommendationsList';
 import './App.css'
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
     <>
     <h1>Recipe Sharing App</h1>
     <SearchBar />
+    <FavoritesList/>
+    <RecommendationsList/>
      <Router>
       <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
         <h1>Recipe Sharing App</h1>
