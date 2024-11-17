@@ -3,28 +3,38 @@
 import React from 'react';
 import { useRecipeStore } from '../store/recipeStore';
 
-const FavoriteButton = ({ recipeId }) => {
+const FavoritesList = () => {
+  // Fetch favorites and all recipes from the store
+  const recipes = useRecipeStore((state) => state.recipes);
   const favorites = useRecipeStore((state) => state.favorites);
-  const addFavorite = useRecipeStore((state) => state.addFavorite);
-  const removeFavorite = useRecipeStore((state) => state.removeFavorite);
 
-  const isFavorite = favorites.includes(recipeId);
+  // Map over the favorites array to fetch full recipe details
+  const favoriteRecipes = favorites
+    .map((id) => recipes.find((recipe) => recipe.id === id))
+    .filter((recipe) => recipe); // Ensure no undefined recipes
 
   return (
-    <button
-      onClick={() => (isFavorite ? removeFavorite(recipeId) : addFavorite(recipeId))}
-      style={{
-        backgroundColor: isFavorite ? 'red' : 'lightgray',
-        color: 'white',
-        border: 'none',
-        padding: '5px 10px',
-        cursor: 'pointer',
-        marginTop: '10px',
-      }}
-    >
-      {isFavorite ? 'Remove Favorite' : 'Add to Favorites'}
-    </button>
+    <div>
+      <h2>My Favorites</h2>
+      {favoriteRecipes.length === 0 ? (
+        <p>No favorites yet! Add some recipes to your favorites list.</p>
+      ) : (
+        favoriteRecipes.map((recipe) => (
+          <div
+            key={recipe.id}
+            style={{
+              border: '1px solid #ddd',
+              padding: '10px',
+              margin: '10px 0',
+            }}
+          >
+            <h3>{recipe.title}</h3>
+            <p>{recipe.description}</p>
+          </div>
+        ))
+      )}
+    </div>
   );
 };
 
-export default FavoriteButton;
+export default FavoritesList;
