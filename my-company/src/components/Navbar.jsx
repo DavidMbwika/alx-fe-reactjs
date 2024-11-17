@@ -5,11 +5,34 @@ import { Link } from "react-router-dom";
 import "./Navbar.css"; // Optional: for custom styles
 
 const Navbar = () => {
+  const navStyle = {
+    backgroundColor: "#333",
+    padding: "1rem",
+  };
+
+  const ulStyle = {
+    listStyle: "none",
+    display: "flex",
+    justifyContent: "space-around",
+    margin: 0,
+    padding: 0,
+  };
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "white",
+    fontWeight: "bold",
+    transition: "color 0.3s ease",
+  };
+
+  const hoverStyle = {
+    color: "#00bcd4",
+  };
   return (
-    <nav className="navbar">
-      <ul className="navbar-links">
-        <li>
-          <Link to="Home.jsx">Home</Link>
+    <nav style={navStyle} className="navbar">
+      <ul style={ulStyle} className="navbar-links">
+        <li style={linkStyle}>
+          <Link style={hoverStyle} to="Home.jsx">Home</Link>
         </li>
         <li>
           <Link to="About.jsx">About</Link>
