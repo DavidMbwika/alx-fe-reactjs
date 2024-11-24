@@ -16,13 +16,14 @@ const fetchPosts = async (page = 1) => {
 const PostsComponent = () => {
   const [page, setPage] = useState(1);
 
-  // Use React Query's useQuery hook
+  // Use React Query's useQuery hook with cacheTime
   const { data, isLoading, isError, error, isFetching, refetch } = useQuery(
     ["posts", page], // Unique query key that includes page
     () => fetchPosts(page),
     {
       keepPreviousData: true, // Retain data while fetching new page
-      staleTime: 30000, // Data is fresh for 30 seconds
+      staleTime: 30000, // Data is considered fresh for 30 seconds
+      cacheTime: 600000, // Cache remains in memory for 10 minutes
       refetchOnWindowFocus: true, // Refetch on focus
     }
   );
