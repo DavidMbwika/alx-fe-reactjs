@@ -4,14 +4,17 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import PostsComponent from "./PostsComponent";
 
-// Initialize a QueryClient instance
+// Initialize QueryClient
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <PostsComponent />
-      <ReactQueryDevtools initialIsOpen={false} />
+      <div>
+        <h1>React Query Demo</h1>
+        <PostsComponent />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </div>
     </QueryClientProvider>
   );
 }
