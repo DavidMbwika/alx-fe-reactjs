@@ -1,27 +1,46 @@
-/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const [error, setError] = useState("");
+  const [usernameError, setUsernameError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+  const validateForm = () => {
+    let isValid = true;
+
+    if (!username) {
+      setUsernameError("Username is required.");
+      isValid = false;
+    } else {
+      setUsernameError("");
+    }
+
+    if (!email) {
+      setEmailError("Email is required.");
+      isValid = false;
+    } else {
+      setEmailError("");
+    }
+
+    if (!password) {
+      setPasswordError("Password is required.");
+      isValid = false;
+    } else {
+      setPasswordError("");
+    }
+
+    return isValid;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, email, password } = formData;
 
-    if (!username || !email || !password) {
-      setError("All fields are required!");
+    if (!validateForm()) {
       return;
     }
 
@@ -29,15 +48,13 @@ const RegistrationForm = () => {
       const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ username, email, password }),
       });
 
       const result = await response.json();
       console.log("API Response:", result);
-      setError(""); // Clear errors on successful submission
     } catch (error) {
       console.error("Error submitting form:", error);
-      setError("Failed to submit form.");
     }
   };
 
@@ -49,30 +66,29 @@ const RegistrationForm = () => {
           <label>Username:</label>
           <input
             type="text"
-            name="username"
             value={username}
-            onChange={handleChange}
+            onChange={(e) => setUsername(e.target.value)}
           />
+          {usernameError && <p style={{ color: "red" }}>{usernameError}</p>}
         </div>
         <div>
           <label>Email:</label>
           <input
             type="email"
-            name="email"
             value={email}
-            onChange={handleChange}
+            onChange={(e) => setEmail(e.target.value)}
           />
+          {emailError && <p style={{ color: "red" }}>{emailError}</p>}
         </div>
         <div>
           <label>Password:</label>
           <input
             type="password"
-            name="password"
             value={password}
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
           />
+          {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
         </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
         <button type="submit">Register</button>
       </form>
     </div>
