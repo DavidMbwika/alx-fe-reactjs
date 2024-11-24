@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 
@@ -8,45 +9,35 @@ const RegistrationForm = () => {
     password: "",
   });
 
-  const [errors, setErrors] = useState({});
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
-  const validateForm = () => {
-    const { username, email, password } = formData; // Destructure here
-    const newErrors = {};
-    if (!username) newErrors.username = "Username is required.";
-    if (!email) newErrors.email = "Email is required.";
-    if (!password) newErrors.password = "Password is required.";
-    return newErrors;
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { username, email, password } = formData; // Destructure again
-    const validationErrors = validateForm();
+    const { username, email, password } = formData;
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+    if (!username || !email || !password) {
+      setError("All fields are required!");
       return;
     }
-
-    setErrors({}); // Clear previous errors if validation passes
 
     try {
       const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify(formData),
       });
 
       const result = await response.json();
       console.log("API Response:", result);
+      setError(""); // Clear errors on successful submission
     } catch (error) {
       console.error("Error submitting form:", error);
+      setError("Failed to submit form.");
     }
   };
 
@@ -59,31 +50,29 @@ const RegistrationForm = () => {
           <input
             type="text"
             name="username"
-            value={formData.username}
+            value={username}
             onChange={handleChange}
           />
-          {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
         </div>
         <div>
           <label>Email:</label>
           <input
             type="email"
             name="email"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
           />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
         <div>
           <label>Password:</label>
           <input
             type="password"
             name="password"
-            value={formData.password}
+            value={password}
             onChange={handleChange}
           />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         </div>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <button type="submit">Register</button>
       </form>
     </div>
