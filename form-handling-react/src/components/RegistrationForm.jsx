@@ -6,34 +6,28 @@ const RegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [usernameError, setUsernameError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [errors, setErrors] = useState({});
 
   const validateForm = () => {
+    const newErrors = {};
     let isValid = true;
 
     if (!username) {
-      setUsernameError("Username is required.");
+      newErrors.username = "Username is required.";
       isValid = false;
-    } else {
-      setUsernameError("");
     }
 
     if (!email) {
-      setEmailError("Email is required.");
+      newErrors.email = "Email is required.";
       isValid = false;
-    } else {
-      setEmailError("");
     }
 
     if (!password) {
-      setPasswordError("Password is required.");
+      newErrors.password = "Password is required.";
       isValid = false;
-    } else {
-      setPasswordError("");
     }
 
+    setErrors(newErrors); // Set the error state with all errors
     return isValid;
   };
 
@@ -69,7 +63,7 @@ const RegistrationForm = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-          {usernameError && <p style={{ color: "red" }}>{usernameError}</p>}
+          {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
         </div>
         <div>
           <label>Email:</label>
@@ -78,7 +72,7 @@ const RegistrationForm = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
         </div>
         <div>
           <label>Password:</label>
@@ -87,7 +81,7 @@ const RegistrationForm = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
+          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
         </div>
         <button type="submit">Register</button>
       </form>
