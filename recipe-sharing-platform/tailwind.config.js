@@ -2,10 +2,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   // Paths to all of your template files to enable purging of unused styles
-  content: [
-    './index.html',                // Main HTML file
-    './src/**/*.{js,jsx,ts,tsx}',  // React component files
-  ],
+  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'], // No need for './public/index.html'
+// React component files
   // Default theme configuration
   theme: {
     extend: {
