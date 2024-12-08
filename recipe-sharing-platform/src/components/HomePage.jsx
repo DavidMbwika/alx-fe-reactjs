@@ -1,28 +1,20 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const HomePage = () => {
-  // Mock data directly inside the component
-  const recipes = [
-    {
-      id: 1,
-      title: "Spaghetti Carbonara",
-      summary: "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 2,
-      title: "Chicken Tikka Masala",
-      summary: "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
-      image: "https://via.placeholder.com/150",
-    },
-    {
-      id: 3,
-      title: "Vegetable Stir-Fry",
-      summary: "A healthy and delicious mix of stir-fried vegetables served with soy sauce.",
-      image: "https://via.placeholder.com/150",
-    },
-  ];
+  // Step 1: State to store the recipe data
+  const [recipes, setRecipes] = useState([]);
+
+  // Step 2: Fetch data from the local 'data.json' file using useEffect
+  useEffect(() => {
+    // Fetch the data.json file
+    fetch('/src/data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        setRecipes(data);  // Update the state with the fetched data
+      })
+      .catch((error) => console.error('Error loading data: ', error));
+  }, []);  // Empty dependency array ensures it only runs once when the component mounts
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
