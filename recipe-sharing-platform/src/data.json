@@ -15,6 +15,26 @@
         "id": 1,
         "title": "Spaghetti Carbonara",
         "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+        "image": "https://via.placeholder.com/150",
+        "ingredients": [
+          "Spaghetti",
+          "Eggs",
+          "Parmesan cheese",
+          "Bacon",
+          "Black pepper"
+        ],
+        "instructions": [
+          "Cook the spaghetti according to the package directions.",
+          "In a separate pan, cook the bacon until crispy.",
+          "Whisk together the eggs and Parmesan cheese.",
+          "Combine the spaghetti with the bacon, and then toss with the egg mixture.",
+          "Season with black pepper and serve."
+        ]
+      },
+      {
+        "id": 1,
+        "title": "Spaghetti Carbonara",
+        "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
         "image": "https://via.placeholder.com/150"
       },
       {
