@@ -58,7 +58,7 @@ const AddRecipeForm = () => {
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="mt-2 w-full p-2 border border-gray-300 rounded-lg"
+              className="mt-2 w-full md:w-3/4 p-2 border border-gray-300 rounded-lg"
             />
             {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
           </div>
@@ -73,7 +73,7 @@ const AddRecipeForm = () => {
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
               rows="4"
-              className="mt-2 w-full p-2 border border-gray-300 rounded-lg"
+              className="mt-2 w-full md:w-3/4 p-2 border border-gray-300 rounded-lg"
               placeholder="Enter ingredients, each on a new line"
             />
             {errors.ingredients && <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>}
@@ -89,7 +89,7 @@ const AddRecipeForm = () => {
               value={steps}
               onChange={(e) => setSteps(e.target.value)}
               rows="6"
-              className="mt-2 w-full p-2 border border-gray-300 rounded-lg"
+              className="mt-2 w-full md:w-3/4 p-2 border border-gray-300 rounded-lg"
               placeholder="Enter the steps to prepare the recipe"
             />
             {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
@@ -98,7 +98,7 @@ const AddRecipeForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg mt-4 hover:bg-blue-600 transition"
+            className="w-full md:w-3/4 bg-blue-500 text-white py-2 rounded-lg mt-4 hover:bg-blue-600 transition"
           >
             Submit Recipe
           </button>
