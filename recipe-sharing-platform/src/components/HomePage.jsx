@@ -16,6 +16,12 @@ const HomePage = () => {
       summary: "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato-based gravy.",
       image: "https://via.placeholder.com/150",
     },
+    {
+      id: 3,
+      title: "Vegetable Stir-Fry",
+      summary: "A healthy and delicious mix of stir-fried vegetables served with soy sauce.",
+      image: "https://via.placeholder.com/150",
+    },
   ];
 
   return (
